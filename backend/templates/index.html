@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireBotAI - PDF Resume Upload</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <div class="bg-white shadow-lg rounded-2xl p-8 max-w-4xl w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Section -->
+                <div class="flex flex-col justify-center">
+                    <h1 class="text-4xl font-bold text-blue-600">HireBotAI</h1>
+                    <p class="text-lg mt-4 text-gray-700 leading-relaxed">
+                        Welcome to HireBotAI, your AI-powered interview assistant! Upload your resume, and let our Generative AI system
+                        conduct a virtual interview. Receive instant feedback, comprehensive reports, and tailored insights to enhance your job prospects.
+                    </p>
+                    <ul class="list-disc ml-6 mt-4 text-gray-600">
+                        <li>Resume parsing with AI</li>
+                        <li>Automated virtual interview</li>
+                        <li>Detailed performance analysis</li>
+                        <li>Instant feedback and improvement suggestions</li>
+                    </ul>
+                </div>
+
+                <!-- Right Section -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-semibold text-blue-500 mb-4">Upload Your Resume</h2>
+                    <form action="/interview" method="POST" enctype="multipart/form-data" class="space-y-4">
+                        <div class="flex flex-col">
+                            <label for="file" class="mb-2 font-medium text-gray-700">Choose your PDF resume:</label>
+                            <input 
+                                type="file" 
+                                id="file" 
+                                name="file" 
+                                class="border border-gray-300 p-2 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300" 
+                                accept=".pdf" 
+                                required>
+                        </div>
+                        <button 
+                            type="submit" 
+                            class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none">
+                            Upload and Analyze
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="mt-8 text-sm text-gray-500">
+            © 2025 HireBotAI. Developed by GiriRam, Shirish & Umesh.
+        </footer>
+    </div>
+</body>
+</html>
