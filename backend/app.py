@@ -1,12 +1,14 @@
 from speech_module.tts import TextToSpeech
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, Response
 from flask_socketio import SocketIO
-from app_functions import extract_text_from_pdf
+from app_functions import extract_text_from_pdf, generate_frames
 from model import prompt_gemini
+# import cv2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 socketio = SocketIO(app, cors_allowed_origins="*")  # Prevent CORS issues
+# camera = cv2.VideoCapture(0)  # Shared webcam
 
 tts = TextToSpeech()  # Global instance to avoid reinitialization issues
 
@@ -26,6 +28,10 @@ def interview():
     session['first_message_sent'] = False  # Ensure AI only speaks once
 
     return render_template('interview.html')
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @socketio.on('connect')
 def handle_connect():
